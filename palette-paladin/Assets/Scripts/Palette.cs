@@ -13,6 +13,8 @@ public class Palette : MonoBehaviour {
 
     [SerializeField] private PalColor color = PalColor.None; // The current color of the palette
 
+    [SerializeField] private EnemyManager enemyManager; // Tracks all enemies on the screen
+
     // Image for displaying the current color
     public Image testImage;
 
@@ -126,9 +128,8 @@ public class Palette : MonoBehaviour {
     // Casts the color, removing it from the palette and affecting creatures
     private void CastColor()
     {
-        // todo
-        Debug.Log("casting: " + color.ToString());
-        color = PalColor.None;
+        enemyManager.CastColor(this.color);
+        this.color = PalColor.None;
     }
 
     // called each from
