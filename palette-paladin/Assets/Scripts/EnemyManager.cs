@@ -6,8 +6,7 @@ public class EnemyManager : MonoBehaviour {
 
     // serializing temporary
     // todo integrate with enemy spawning
-    private List<Enemy> enemies;
-    [SerializeField] private float outOfBoundsY;
+    private List<Enemy> enemies = new List<Enemy>();
 
     // Casts a color on all enemies
     public void CastColor(Palette.PalColor color)

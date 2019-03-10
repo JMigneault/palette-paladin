@@ -2,54 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnScript : MonoBehaviour
+public class SpawnScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject enemy;
+    [SerializeField] private GameObject minionParent;
+    private Minion[] minions;
     public float spawnTime; 
     public float spawnDelay;
-    public GameObject player;
-    // public Palette.PalColor;
+
+    private EnemyManager enemyManager;
+
+    // Parameters defining the sliders path curveRadius(X/Y) values in range [0.0f, 1.0f] as proportion of screen
+    [SerializeField] private float curveRadiusX;
+    [SerializeField] private float curveRadiusY;
+    [SerializeField] private float minAngle; // Angles in radians/pi => 2 is 360 degrees, 1 is a semicircle, 5/6 is 5/12 of a circle
+    [SerializeField] private float maxAngle;
+
+    private float curveOffsetX; // Pixel offsets for starting position
+    private float curveOffsetY;
+
 
     void Start()
     {
-    	InvokeRepeating("Spawn", spawnDelay, spawnTime);   
+        curveOffsetX = this.transform.position.x;
+        curveOffsetY = this.transform.position.y;
+        enemyManager = this.GetComponent<EnemyManager>();
+        minions = minionParent.GetComponentsInChildren<Minion>();
+        InvokeRepeating("Spawn", spawnDelay, spawnTime);
+    }
+
+    // Changes the position proportion ([0.0f, 1.0f]) to a pixel position on the screen
+    public Vector2 PosToCoords(float pos)
+    {
+        float t = minAngle * Mathf.PI + (maxAngle - minAngle) * Mathf.PI * pos;
+        float x = curveRadiusX * Mathf.Cos(t) + curveOffsetX;
+        float y = curveRadiusY * Mathf.Sin(t) + curveOffsetY;
+        return new Vector2(x, y);
     }
 
     // Update is called once per frame
-    void Spawn()
-    {	
-    	//TODO: find the game condition 
-    	// if (false){
-    	// 	return;
-    	// }
-
-		/*
-		for spawning from a rectangle shape (the original plan)
-		*/
-
-    	Renderer rd = GetComponent<Renderer>();
-
-    	float p1 = transform.position.x - rd.bounds.size.x/2;
-    	float p2 = transform.position.x + rd.bounds.size.x/2;
-
-    	/*
-		spawning from a "u-shape"
-    	*/
-  //   	float theta = Random.Range(0,Mathf.PI);
-  //   	float vectorX = Mathf.cos(theta)
-  //   	float vectorY = Math.sin(theta)
-  //   	float rectX = transform.position.x;
-		// float playerX = player.transform.position.x;
-  //   	float playerY = player.transform.position.y;
-
-
-
-
-    	// float curr = Random.Range(p1,p2)
-    	Vector2 spawnPoint = new Vector2(Random.Range(p1,p2),transform.position.y);
-
-    	Instantiate(enemy, spawnPoint, Quaternion.identity);
+    private void Spawn()
+    {
+        float spawnPos = Random.value;
+        Vector2 spawnPoint = PosToCoords(spawnPos);
+        Minion toSpawn = minions[(int)Random.Range(0, minions.Length)];
+    	Minion spawned = Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+        enemyManager.AddEnemy(spawned);
+        spawned.Spawn();
     }
 
 

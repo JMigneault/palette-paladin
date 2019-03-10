@@ -7,6 +7,7 @@ public class Minion : Enemy
 
     // Minions have one static color
     [SerializeField] private Palette.PalColor color;
+    [SerializeField] private Vector3 targetPos;
 
     // Called each frame
     private void Update()
@@ -32,7 +33,8 @@ public class Minion : Enemy
     // Simply advance down the screen
     public override void Move()
     {
-        transform.position += this.speed * Time.deltaTime * new Vector3(0, -1, 0);
+        Vector3 direction = (targetPos - this.transform.position).normalized;
+        transform.position += this.speed * Time.deltaTime * direction;
     }
 
     // No spawn effect

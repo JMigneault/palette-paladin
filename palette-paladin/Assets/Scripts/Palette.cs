@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Palette : MonoBehaviour {
 
     // Enum representing all possible colors, may be extended in the future
-    public enum PalColor { None=0, Red=1, Blue=2, Yellow=4, Green=6, Purple=3, Orange=5, Brown=7 }; // todo: could bitwise represenation work? (use [flags])
+    public enum PalColor { None, Red, Blue, Yellow, Green, Purple, Orange, Brown }; // todo: could bitwise representation work? (use [flags])
 
     [SerializeField] private PalColor color = PalColor.None; // The current color of the palette
 

@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 89aea383f0d712848bdf37fd7c85b077
+guid: 621fc226ebc54b24fa16f6d9168eaa2f
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: table
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -46,7 +45,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -83,31 +82,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: table
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 9
-        width: 222
-        height: 102
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9b49eaae459ec74e8f54b9feb072b35
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a6fe64abeb855f84c9ffcf948611c21e
+    spriteID: 5224e89b549539d438aa5e15f4da63c1
     vertices: []
     indices: 
     edges: []

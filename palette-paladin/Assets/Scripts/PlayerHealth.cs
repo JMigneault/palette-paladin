@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour {
     [SerializeField] private GameObject gameOverUI;
     private int health;
 
+
     void Start()
     {
         health = startingHealth;
