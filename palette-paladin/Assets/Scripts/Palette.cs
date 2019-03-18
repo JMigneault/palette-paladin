@@ -103,11 +103,11 @@ public class Palette : MonoBehaviour {
         }
         if (col == PalColor.Orange)
         {
-            return Color.cyan; // placeholder orange :(
+            return new Vector4(1.0f, 0.55f, 0.0f, 1.0f);
         }
         if (col == PalColor.Purple)
         {
-            return Color.magenta;
+            return new Vector4(0.29f, 0.0f, 0.51f, 1.0f);
         }
         if (col == PalColor.Green)
         {

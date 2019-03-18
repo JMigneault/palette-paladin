@@ -77,7 +77,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4294557676682754}
   - component: {fileID: 212811691372567288}
-  - component: {fileID: 114879432716611916}
   - component: {fileID: 50997103001739452}
   - component: {fileID: 61751119386967768}
   m_Layer: 0
@@ -668,20 +667,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   color: 2
-  targetPos: {x: 0, y: -4, z: 0}
---- !u!114 &114879432716611916
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1752231284529600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 591d78bd2fc270a4bbf11484fa5b1bba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  color: 4
   targetPos: {x: 0, y: -4, z: 0}
 --- !u!212 &212027352607606856
 SpriteRenderer:

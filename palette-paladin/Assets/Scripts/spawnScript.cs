@@ -20,6 +20,7 @@ public class SpawnScript : MonoBehaviour
 
     private float curveOffsetX; // Pixel offsets for starting position
     private float curveOffsetY;
+	private int generation = 0;
 
 
     void Start()
@@ -28,7 +29,8 @@ public class SpawnScript : MonoBehaviour
         curveOffsetY = this.transform.position.y;
         enemyManager = this.GetComponent<EnemyManager>();
         minions = minionParent.GetComponentsInChildren<Minion>();
-        InvokeRepeating("Spawn", spawnDelay, spawnTime);
+		StartCoroutine(SpawnDelayer());
+        //InvokeRepeating("Spawn", spawnDelay, spawnTime);
     }
 
     // Changes the position proportion ([0.0f, 1.0f]) to a pixel position on the screen
@@ -45,11 +47,47 @@ public class SpawnScript : MonoBehaviour
     {
         float spawnPos = Random.value;
         Vector2 spawnPoint = PosToCoords(spawnPos);
-        Minion toSpawn = minions[(int)Random.Range(0, minions.Length)];
-    	Minion spawned = Instantiate(toSpawn, spawnPoint, Quaternion.identity);
-        enemyManager.AddEnemy(spawned);
-        spawned.Spawn();
+		float primaryProb = 1.0f;
+		float secondaryProb = Mathf.Min(1.0f, Mathf.Exp(generation - 30));
+		float tertiaryProb = Mathf.Min(1.0f, Mathf.Exp(generation - 60));
+		float randValue = Random.Range(0.0f, primaryProb + secondaryProb + tertiaryProb);
+		if (randValue < tertiaryProb)
+		{
+			Minion toSpawn = minions[6];
+			Minion spawned = Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+			enemyManager.AddEnemy(spawned);
+			spawned.Spawn();
+		}
+		else if (randValue < (secondaryProb + tertiaryProb))
+		{
+			Minion toSpawn = minions[Random.Range(3, 6)];
+			Minion spawned = Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+			enemyManager.AddEnemy(spawned);
+			spawned.Spawn();
+		}
+		else
+		{
+			Minion toSpawn = minions[Random.Range(0, 3)];
+			Minion spawned = Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+			enemyManager.AddEnemy(spawned);
+			spawned.Spawn();
+		}
     }
 
-
+	IEnumerator SpawnDelayer()
+    {
+        while (true)
+		{
+			yield return new WaitForSeconds(spawnTime);
+			Spawn();
+			if (generation < 60)
+			{
+				generation++;
+			}
+			if (spawnTime > 0.5)
+			{
+				spawnTime *= 0.99f;
+			}
+		}
+    }
 }
