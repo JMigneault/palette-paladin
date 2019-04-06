@@ -11,12 +11,14 @@ public class Palette : MonoBehaviour {
     // Enum representing all possible colors, may be extended in the future
     public enum PalColor { None, Red, Blue, Yellow, Green, Purple, Orange, Brown }; // todo: could bitwise representation work? (use [flags])
 
-    [SerializeField] private PalColor color = PalColor.None; // The current color of the palette
+    private PalColor color = PalColor.None; // The current color of the palette
 
     [SerializeField] private EnemyManager enemyManager; // Tracks all enemies on the screen
 
+    [SerializeField] private Sprite[] paletteSprites; // All palette sprites (of each color)
+
     // Image for displaying the current color
-    public Image testImage;
+    [SerializeField] private Image currentImage;
 
     // Naive color mixing system (all done with conditionals)
     public void MixColor(PalColor toMixColor)
@@ -87,42 +89,9 @@ public class Palette : MonoBehaviour {
     }
 
     // Converts a PalColor enum to a UI.graphic.Color for display on a UI image
-    private Color EnumToUIColor(PalColor col)
+    private Sprite EnumToSprite(PalColor col)
     {
-        if (col == PalColor.Blue)
-        {
-            return Color.blue;
-        }
-        if (col == PalColor.Yellow)
-        {
-            return Color.yellow;
-        }
-        if (col == PalColor.Red)
-        {
-            return Color.red;
-        }
-        if (col == PalColor.Orange)
-        {
-            return Color.cyan; // placeholder orange :(
-        }
-        if (col == PalColor.Purple)
-        {
-            return Color.magenta;
-        }
-        if (col == PalColor.Green)
-        {
-            return Color.green;
-        }
-        if (col == PalColor.Brown)
-        {
-            return Color.black;
-        }
-        if (col == PalColor.None)
-        {
-            return Color.white;
-        }
-        Debug.Log("error color not found :" + col.ToString());
-        return Color.gray;
+        return this.paletteSprites[(int) col];
     }
 
     // Casts the color, removing it from the palette and affecting creatures
@@ -135,8 +104,8 @@ public class Palette : MonoBehaviour {
     // called each from
     private void Update()
     {
-        // for testing
-        testImage.color = EnumToUIColor(color); // set UI image to current color
+        // set sprite to appropriate color
+        this.currentImage.sprite = EnumToSprite(this.color);
         if (Input.GetKeyDown(KeyCode.Return)) // "Enter" casts the color
         {
             this.CastColor();

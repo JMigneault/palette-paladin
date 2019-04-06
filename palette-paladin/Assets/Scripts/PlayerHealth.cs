@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour {
 
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private int startingHealth;
-    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private LossPauseMenu menuManager;
     private int health;
 
 
@@ -28,8 +28,8 @@ public class PlayerHealth : MonoBehaviour {
     //  Called upon game lost
     private void GameOver()
     {
-        Time.timeScale = 0;
-        gameOverUI.SetActive(true);
+        menuManager.GameLost();
+
     }
 
     // Called when an enemy walks into the paladin
