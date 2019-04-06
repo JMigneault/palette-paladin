@@ -38,8 +38,8 @@ public class PlayerHealth : MonoBehaviour {
         if (collision.tag == "Minion")
         {
             Minion m = collision.GetComponent<Minion>();
-            this.TakeDamage(1);
             m.Die();
+            this.TakeDamage(1);
             enemyManager.ClearEnemies();
         }
     }

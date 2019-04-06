@@ -8,6 +8,11 @@ public class EnemyManager : MonoBehaviour {
     // todo integrate with enemy spawning
     private List<Enemy> enemies = new List<Enemy>();
 
+    private void Update()
+    {
+        ClearEnemies();
+    }
+
     // Casts a color on all enemies
     public void CastColor(Palette.PalColor color)
     {
@@ -15,7 +20,6 @@ public class EnemyManager : MonoBehaviour {
         {
             e.AttackedBy(color);
         }
-        ClearEnemies();
     }
 
     // Adds an enemy to the enemy list

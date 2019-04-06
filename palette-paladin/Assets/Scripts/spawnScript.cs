@@ -6,7 +6,7 @@ public class SpawnScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject minionParent;
-    private Minion[] minions;
+    private Enemy[] minions;
     public float spawnTime; 
     public float spawnDelay;
 
@@ -27,7 +27,7 @@ public class SpawnScript : MonoBehaviour
         curveOffsetX = this.transform.position.x;
         curveOffsetY = this.transform.position.y;
         enemyManager = this.GetComponent<EnemyManager>();
-        minions = minionParent.GetComponentsInChildren<Minion>();
+        minions = minionParent.GetComponentsInChildren<Enemy>();
         InvokeRepeating("Spawn", spawnDelay, spawnTime);
     }
 
@@ -45,8 +45,13 @@ public class SpawnScript : MonoBehaviour
     {
         float spawnPos = Random.value;
         Vector2 spawnPoint = PosToCoords(spawnPos);
-        Minion toSpawn = minions[(int)Random.Range(0, minions.Length)];
-    	Minion spawned = Instantiate(toSpawn, spawnPoint, Quaternion.identity);
+        Enemy toSpawn = minions[(int)Random.Range(0, minions.Length)];
+        Spawn(toSpawn, spawnPoint);
+    }
+
+    public void Spawn(Enemy e, Vector3 pos)
+    {
+        Enemy spawned = Instantiate(e.gameObject, pos, Quaternion.identity).GetComponent<Enemy>();
         enemyManager.AddEnemy(spawned);
         spawned.Spawn();
     }
