@@ -1550,14 +1550,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9fedf93a24c4545a361e6a207fc47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 2.5
   enemiesParent: {fileID: 1424992275064796}
   spawnBoundsXmin: -7
   spawnBoundsXmax: 7
   spawnBoundsYmin: 5
   spawnBoundsYmax: -1
   spawner: {fileID: 114634631102964316, guid: a6aa1b0ccb03cec4eaa2f592cecf4595, type: 2}
-  minWalkDistance: 0
+  minWalkDistance: 5
   canSpawnEnemies: 000000000100000002000000
 --- !u!114 &114683232434946504
 MonoBehaviour:
