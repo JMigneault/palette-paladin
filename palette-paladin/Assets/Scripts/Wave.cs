@@ -86,5 +86,5 @@ public class SpawnInfo
 	[SerializeField] int enemyIndex;
 	public int EnemyIndex { get { return enemyIndex; } }
 	[SerializeField] float probability;
-	public int Probability { get { return probability; } }
+	public float Probability { get { return probability; } }
 }
