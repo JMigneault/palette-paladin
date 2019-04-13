@@ -10,10 +10,9 @@ public class Queen : Enemy
     [SerializeField] private float spawnBoundsXmax;
     [SerializeField] private float spawnBoundsYmin;
     [SerializeField] private float spawnBoundsYmax;
-    [SerializeField] private SpawnScript spawner;
+    [SerializeField] private Spawner spawner;
     [SerializeField] private float minWalkDistance;
 
-    private Vector3 direction = Vector2.down;
     private Vector3 targetPosition;
     private Enemy[] minions;
 
@@ -73,6 +72,6 @@ public class Queen : Enemy
     private void GenerateMinions()
     {
         Enemy toSpawn = minions[(int)Random.Range(0, minions.Length - 1)];
-        spawner.Spawn(toSpawn, transform.position);
+        spawner.Spawn(toSpawn);
     }
 }

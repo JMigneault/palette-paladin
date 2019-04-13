@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
 
-    // serializing temporary
-    // todo integrate with enemy spawning
     private List<Enemy> enemies = new List<Enemy>();
 
     private void Update()
