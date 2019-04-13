@@ -60,6 +60,7 @@ public class SubWave
 				rand = Random.Range(0f, total);
 			}
 			float cumulative = 0f;
+			int returnIntex = spawnInfo[spawnInfo.Length - 1].EnemyIndex;
 			for (int i = 0; i < spawnInfo.Length; i++)
 			{
 				cumulative += spawnInfo[i].Probability;
@@ -68,6 +69,7 @@ public class SubWave
 					return spawnInfo[i].EnemyIndex;
 				}
 			}
+			return returnIntex;
 		}
 	}
     [SerializeField] private int numEnemies;
