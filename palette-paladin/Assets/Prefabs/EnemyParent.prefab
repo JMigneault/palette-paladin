@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 50354019063053166}
   - component: {fileID: 61112396451933102}
   m_Layer: 0
-  m_Name: PurpleParent
+  m_Name: PurpleMinion
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 61518960354183930}
   - component: {fileID: 114491368547764760}
   m_Layer: 0
-  m_Name: BlueParent (1)
+  m_Name: BlueRunner
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 50143595513694598}
   - component: {fileID: 61720176860292742}
   m_Layer: 0
-  m_Name: BlueParent
+  m_Name: BlueMinion
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 50095859199045564}
   - component: {fileID: 61967332146224382}
   m_Layer: 0
-  m_Name: RedParent
+  m_Name: RedMinion
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 50635519779496698}
   - component: {fileID: 61817724124434806}
   m_Layer: 0
-  m_Name: GreenParent
+  m_Name: GreenMinion
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 61164948579820856}
   - component: {fileID: 114517907087546662}
   m_Layer: 0
-  m_Name: BrownParent (1)
+  m_Name: Queen
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 61947348080240012}
   - component: {fileID: 114683232434946504}
   m_Layer: 0
-  m_Name: YellowParent (1)
+  m_Name: YellowRunner
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 50744147278027986}
   - component: {fileID: 61150775087726428}
   m_Layer: 0
-  m_Name: YellowParent
+  m_Name: YellowMinion
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 50047503249066596}
   - component: {fileID: 61621604678738978}
   m_Layer: 0
-  m_Name: BrownParent
+  m_Name: BlackMinion
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 61191955191203230}
   - component: {fileID: 114345353151423128}
   m_Layer: 0
-  m_Name: RedParent (1)
+  m_Name: RedRunner
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 50752209723110592}
   - component: {fileID: 61326457812448158}
   m_Layer: 0
-  m_Name: OrangeParent
+  m_Name: OrangeMinion
   m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,11 +437,11 @@ Transform:
   m_Children:
   - {fileID: 4715775777855656}
   - {fileID: 4588914114651320}
-  - {fileID: 4061598115694098}
-  - {fileID: 4830590714501768}
-  - {fileID: 4993540848786352}
   - {fileID: 4718751339112194}
   - {fileID: 4591376753053004}
+  - {fileID: 4993540848786352}
+  - {fileID: 4061598115694098}
+  - {fileID: 4830590714501768}
   - {fileID: 4042248961336456}
   - {fileID: 4206613580649978}
   - {fileID: 4727947539618020}
@@ -461,7 +461,7 @@ Transform:
   m_Children:
   - {fileID: 4072341394718022}
   m_Father: {fileID: 4046784340670734}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4072341394718022
 Transform:
@@ -621,7 +621,7 @@ Transform:
   m_Children:
   - {fileID: 4759221033782380}
   m_Father: {fileID: 4046784340670734}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4681854075353760
 Transform:
@@ -662,7 +662,7 @@ Transform:
   m_Children:
   - {fileID: 4681854075353760}
   m_Father: {fileID: 4046784340670734}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4727947539618020
 Transform:
@@ -703,7 +703,7 @@ Transform:
   m_Children:
   - {fileID: 4564745660080126}
   m_Father: {fileID: 4046784340670734}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4841430496605160
 Transform:
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   spawnBoundsYmax: -1
   spawner: {fileID: 114634631102964316, guid: a6aa1b0ccb03cec4eaa2f592cecf4595, type: 2}
   minWalkDistance: 0
-  canSpawnEnemies: 00000000010000000200000003000000040000000500000006000000
+  canSpawnEnemies: 000000000100000002000000
 --- !u!114 &114683232434946504
 MonoBehaviour:
   m_ObjectHideFlags: 1
