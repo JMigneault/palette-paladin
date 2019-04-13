@@ -14,6 +14,9 @@ public class Queen : Enemy
     [SerializeField] private float minWalkDistance;
     [SerializeField] private int[] canSpawnEnemies;
 
+    [SerializeField] private Palette.PalColor[] healthSequence;
+    private int nextColorIndex = 0;
+
     private Vector3 targetPosition;
     private Enemy[] enemies;
 
@@ -34,12 +37,20 @@ public class Queen : Enemy
 
     public override void AttackedBy(Palette.PalColor attackColor)
     {
-        // todo
+        if (attackColor == healthSequence[nextColorIndex])
+        {
+            nextColorIndex++;
+            // todo adjust sprite
+            if (nextColorIndex == healthSequence.Length)
+            {
+                this.Die();
+            }
+        }
     }
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        isDead = true;
     }
 
     public override void Move()

@@ -1521,7 +1521,7 @@ MonoBehaviour:
   speed: 1
   color: 7
   targetPos: {x: 0, y: -4, z: 0}
-  deathSprite: {fileID: 21300000, guid: 8aa30ef4d57dd344d91964d507125d1c, type: 3}
+  deathSprite: {fileID: 21300000, guid: c74c3f2cafcb25f4c801e3adbac82841, type: 3}
   deathTime: 0.6
 --- !u!114 &114500946882728046
 MonoBehaviour:
@@ -2057,12 +2057,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8aa30ef4d57dd344d91964d507125d1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ab1923a77ac25a46bdbfddb8b58c7a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1.24, y: 1.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
