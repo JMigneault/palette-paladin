@@ -46,12 +46,43 @@ public class Wave {
 [System.Serializable]
 public class SubWave
 {
-    [SerializeField] private int[] indexRange;
-    public int GetEnemy { get { return indexRange[(int)Random.Range(0, indexRange.Length)]; } }
+    [SerializeField] private SpawnInfo[] spawnInfo;
+    public int GetEnemy {
+		get {
+			float total = 0f;
+			for (int i = 0; i < spawnInfo.Length; i++)
+			{
+				total += spawnInfo[i].Probability;
+			}
+			float rand = random.Range(0.0, total);
+			while (rand == total)
+			{
+				rand = random.Range(0.0, total);
+			}
+			float cumulative = 0f;
+			for (int i = 0; i < spawnInfo.Length; i++)
+			{
+				cumulative += spawnInfo[i].Probability;
+				if (rand < cumulative)
+				{
+					return spawnInfo[i].EnemyIndex;
+				}
+			}
+		}
+	}
     [SerializeField] private int numEnemies;
     public int NumEnemies { get { return numEnemies; } }
     [SerializeField] private float spawnRate;
     public float SpawnRate { get { return spawnRate; } }
     [SerializeField] private float postSpawnDelay;
     public float PostSpawnDelay { get { return postSpawnDelay; } }
+}
+
+[System.Serializable]
+public class SpawnInfo
+{
+	[SerializeField] int enemyIndex;
+	public int EnemyIndex { get { return enemyIndex; } }
+	[SerializeField] float probability;
+	public int Probability { get { return probability; } }
 }
