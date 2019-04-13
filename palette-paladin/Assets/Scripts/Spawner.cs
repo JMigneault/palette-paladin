@@ -71,7 +71,9 @@ public class Spawner : MonoBehaviour
         {
             while (!w.IsSubWaveFinished())
             {
-                Enemy nextEnemy = enemies[w.GetNextEnemy()];
+                int en = w.GetNextEnemy();
+                Debug.Log(en);
+                Enemy nextEnemy = enemies[en];
                 Spawn(nextEnemy);
                 yield return new WaitForSeconds(w.GetSpawnRate());
             }
@@ -81,12 +83,19 @@ public class Spawner : MonoBehaviour
         startNextWave = true;
     }
 
+    public void Spawn(Enemy e, Vector3 spawnPoint)
+    {
+        Enemy spawned = Instantiate(e.gameObject, spawnPoint, Quaternion.identity).GetComponent<Enemy>();
+        Debug.Log(spawned);
+        Debug.Log(enemyManager);
+        enemyManager.AddEnemy(spawned);
+        spawned.Spawn(enemyManager);
+    }
+
     public void Spawn(Enemy e)
     {
         Vector2 spawnPoint = PosToCoords(Random.value);
-        Enemy spawned = Instantiate(e.gameObject, spawnPoint, Quaternion.identity).GetComponent<Enemy>();
-        enemyManager.AddEnemy(spawned);
-        spawned.Spawn();
+        Spawn(e, spawnPoint);
     }
 
 }

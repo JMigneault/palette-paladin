@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour {
     public bool IsDead { get { return isDead; } }
 
     // Called upon spawning of the enemy
-    public abstract void Spawn();
+    public abstract void Spawn(EnemyManager e);
 
     // Called to move the enemy from the Update method
     public abstract void Move();

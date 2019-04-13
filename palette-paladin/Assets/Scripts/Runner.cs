@@ -7,7 +7,7 @@ public class Runner : Minion {
     [SerializeField] private float waitTime;
     private bool dontMove; // prevents runners from running after they've been killed
 
-    public override void Spawn()
+    public override void Spawn(EnemyManager e)
     {
         StartCoroutine(FreezeForTime());
     }
