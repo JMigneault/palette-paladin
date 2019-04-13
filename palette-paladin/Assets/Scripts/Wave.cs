@@ -54,10 +54,10 @@ public class SubWave
 			{
 				total += spawnInfo[i].Probability;
 			}
-			float rand = Random.Range(0.0, total);
+			float rand = Random.Range(0f, total);
 			while (rand == total)
 			{
-				rand = Random.Range(0.0, total);
+				rand = Random.Range(0f, total);
 			}
 			float cumulative = 0f;
 			for (int i = 0; i < spawnInfo.Length; i++)
