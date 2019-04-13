@@ -5,20 +5,21 @@ using UnityEngine;
 public class Queen : Enemy
 {
 
-    [SerializeField] private GameObject minionParent;
+    [SerializeField] private GameObject enemiesParent;
     [SerializeField] private float spawnBoundsXmin;
     [SerializeField] private float spawnBoundsXmax;
     [SerializeField] private float spawnBoundsYmin;
     [SerializeField] private float spawnBoundsYmax;
     [SerializeField] private Spawner spawner;
     [SerializeField] private float minWalkDistance;
+    [SerializeField] private int[] canSpawnEnemies;
 
     private Vector3 targetPosition;
-    private Enemy[] minions;
+    private Enemy[] enemies;
 
     private void Start()
     {
-        minions = minionParent.GetComponentsInChildren<Enemy>();
+        enemies = enemiesParent.GetComponentsInChildren<Enemy>();
     }
 
     private void Update()
@@ -47,9 +48,10 @@ public class Queen : Enemy
         transform.position += this.speed * Time.deltaTime * direction;
     }
 
-    public override void Spawn()
+    public override void Spawn(EnemyManager e)
     {
         this.targetPosition = ChooseTarget();
+        this.spawner = e.GetComponent<Spawner>();
     }
 
     private Vector3 ChooseTarget()
@@ -71,7 +73,7 @@ public class Queen : Enemy
 
     private void GenerateMinions()
     {
-        Enemy toSpawn = minions[(int)Random.Range(0, minions.Length - 1)];
-        spawner.Spawn(toSpawn);
+        Enemy toSpawn = enemies[canSpawnEnemies[(int) Random.Range(0, canSpawnEnemies.Length)]];
+        spawner.Spawn(toSpawn, transform.position);
     }
 }

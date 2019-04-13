@@ -52,6 +52,6 @@ public class Minion : Enemy
     }
 
     // No spawn effect
-    public override void Spawn() {  }
+    public override void Spawn(EnemyManager e) {  }
     
 }
