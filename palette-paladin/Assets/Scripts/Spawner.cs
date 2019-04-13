@@ -77,6 +77,10 @@ public class Spawner : MonoBehaviour
                 Spawn(nextEnemy);
                 yield return new WaitForSeconds(w.GetSpawnRate());
             }
+			while (enemyManager.hasEnemies())
+			{
+				yield return new WaitForSeconds(1);
+			}
             yield return new WaitForSeconds(w.GetDelay());
             w.NextSubWave();
         }

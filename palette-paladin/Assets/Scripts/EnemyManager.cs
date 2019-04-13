@@ -25,6 +25,11 @@ public class EnemyManager : MonoBehaviour {
     {
         enemies.Add(e);
     }
+	
+	public boolean hasEnemies()
+	{
+		return enemies.Count > 0;
+	}
 
     // Updates the enemy list based on which enemies have been killed
     public void ClearEnemies()
