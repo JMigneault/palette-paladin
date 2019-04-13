@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour {
         enemies.Add(e);
     }
 	
-	public boolean hasEnemies()
+	public bool hasEnemies()
 	{
 		return enemies.Count > 0;
 	}
