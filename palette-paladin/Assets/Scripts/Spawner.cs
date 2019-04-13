@@ -71,9 +71,7 @@ public class Spawner : MonoBehaviour
         {
             while (!w.IsSubWaveFinished())
             {
-                int en = w.GetNextEnemy();
-                Debug.Log(en);
-                Enemy nextEnemy = enemies[en];
+                Enemy nextEnemy = enemies[w.GetNextEnemy()];
                 Spawn(nextEnemy);
                 yield return new WaitForSeconds(w.GetSpawnRate());
             }
@@ -90,8 +88,6 @@ public class Spawner : MonoBehaviour
     public void Spawn(Enemy e, Vector3 spawnPoint)
     {
         Enemy spawned = Instantiate(e.gameObject, spawnPoint, Quaternion.identity).GetComponent<Enemy>();
-        Debug.Log(spawned);
-        Debug.Log(enemyManager);
         enemyManager.AddEnemy(spawned);
         spawned.Spawn(enemyManager);
     }
