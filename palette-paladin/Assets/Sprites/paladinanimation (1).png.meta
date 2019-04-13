@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 8c130f4742aea6447a9bebb3c12439d9
+guid: 79a8798826f87c24382ffd981fb8cc74
 TextureImporter:
   fileIDToRecycleName:
-    21300000: paladinanimation_0
-    21300002: paladinanimation_1
-    21300004: paladinanimation_2
+    21300000: paladinanimation (1)_0
+    21300002: paladinanimation (1)_1
+    21300004: paladinanimation (1)_2
+    21300006: paladinanimation (1)_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -87,13 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: paladinanimation_0
+      name: paladinanimation (1)_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 11
-        width: 100
-        height: 150
+        x: 0
+        y: 0
+        width: 160
+        height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -101,19 +102,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6ddcc7fff8435d438c645cc06a296f3
+      spriteID: 59553155663794e4da0e97e8ad5c79ff
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paladinanimation_1
+      name: paladinanimation (1)_1
       rect:
         serializedVersion: 2
-        x: 103
-        y: 8
-        width: 100
-        height: 150
+        x: 132
+        y: 0
+        width: 160
+        height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,19 +122,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f313b2b5e690e24bbf24b878ab52180
+      spriteID: b9fb5e397941c614f889e202cac6f8b6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: paladinanimation_2
+      name: paladinanimation (1)_2
       rect:
         serializedVersion: 2
-        x: 206
-        y: 9
-        width: 100
-        height: 150
+        x: 279
+        y: 0
+        width: 160
+        height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,7 +142,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c1fe00324c5f8c4da402759171ca23b
+      spriteID: 6f399aac5d7d4ae45859b82beca4ab3f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paladinanimation (1)_3
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 0
+        width: 160
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6688953252ca2c74e99c283509c1fdda
       vertices: []
       indices: 
       edges: []
@@ -149,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2db40d04da1700d4c8a93f2489915799
+    spriteID: a6886117218f33341afe80324fb47426
     vertices: []
     indices: 
     edges: []

@@ -568,19 +568,19 @@ Prefab:
         type: 2}
       propertyPath: playerImage
       value: 
-      objectReference: {fileID: 21300002, guid: 8c130f4742aea6447a9bebb3c12439d9,
+      objectReference: {fileID: 21300002, guid: 79a8798826f87c24382ffd981fb8cc74,
         type: 3}
     - target: {fileID: 114516753563714850, guid: 62cb611fd89d6314b90524cd73eb98da,
         type: 2}
       propertyPath: playerImage
       value: 
-      objectReference: {fileID: 21300000, guid: 8c130f4742aea6447a9bebb3c12439d9,
+      objectReference: {fileID: 21300000, guid: 79a8798826f87c24382ffd981fb8cc74,
         type: 3}
     - target: {fileID: 114408724273937024, guid: 62cb611fd89d6314b90524cd73eb98da,
         type: 2}
       propertyPath: playerImage
       value: 
-      objectReference: {fileID: 21300004, guid: 8c130f4742aea6447a9bebb3c12439d9,
+      objectReference: {fileID: 21300004, guid: 79a8798826f87c24382ffd981fb8cc74,
         type: 3}
     - target: {fileID: 114408724273937024, guid: 62cb611fd89d6314b90524cd73eb98da,
         type: 2}
@@ -919,8 +919,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 2.5, y: -154.86}
+  m_SizeDelta: {x: 583, y: 171}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1028105086
 MonoBehaviour:
@@ -941,9 +941,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 87471c3e2a85f1949a2a1dbbb1d4e6da, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 79a8798826f87c24382ffd981fb8cc74, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1117,7 +1117,7 @@ Prefab:
     - target: {fileID: 114634631102964316, guid: a6aa1b0ccb03cec4eaa2f592cecf4595,
         type: 2}
       propertyPath: waves.Array.data[0].waveComposition.Array.data[0].spawnInfo.Array.data[1].enemyIndex
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6aa1b0ccb03cec4eaa2f592cecf4595, type: 2}
