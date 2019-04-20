@@ -13,7 +13,11 @@ public class Slider : MonoBehaviour {
     [SerializeField] private float minAngle; // Angles in radians/pi => 2 is 360 degrees, 1 is a semicircle, 5/6 is 5/12 of a circle
     [SerializeField] private float maxAngle;
 
-    [SerializeField] private float speed; // Speed in radians/pi/sec => 1 is 180 degrees/second
+    private float speed; // Speed in radians/pi/sec => 1 is 180 degrees/second
+    private int direction = 1;
+
+    [SerializeField] private WaveTracker waveTracker;
+    [SerializeField] private float[] waveSpeeds; // a speed for each wave
 
     private SliderRegion[] regions; // An array of regions on the slider bar
 
@@ -64,7 +68,7 @@ public class Slider : MonoBehaviour {
     // Moves the slider by increasing position by speed and finding the new pixel coordinates
     private void MoveSlider()
     {
-        position += speed * Time.deltaTime;
+        position += speed * direction * Time.deltaTime;
         transform.position = PosToCoords(position);
     }
 
@@ -73,11 +77,11 @@ public class Slider : MonoBehaviour {
     {
         if (position > 1.0f) {
             position = 1.0f;
-            speed *= -1;
+            direction *= -1;
         } else if (position < 0.0f)
         {
             position = 0.0f;
-            speed *= -1;
+            direction *= -1;
         }
     }
 
@@ -104,6 +108,7 @@ public class Slider : MonoBehaviour {
     // called each frame
     private void Update()
     {
+        this.speed = waveTracker.SliderSpeed;
         MoveSlider(); // advance slider position
         CheckForTurnAround(); // reverse speed if slider at end of bar
         if (Input.GetKeyDown(KeyCode.Space)) // check for user input

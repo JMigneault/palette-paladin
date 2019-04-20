@@ -6,6 +6,8 @@ using UnityEngine;
 public class Wave {
 
     [SerializeField] private SubWave[] waveComposition;
+    [SerializeField] private float sliderSpeed;
+    public float SliderSpeed { get { return sliderSpeed; } }
     private int wavei = 0;
     private int enemyj = 0;
 

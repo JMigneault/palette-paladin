@@ -10,6 +10,8 @@ public class Spawner : MonoBehaviour
 
     private EnemyManager enemyManager;
 
+    [SerializeField] private WaveTracker waveTracker;
+
     [SerializeField] private Wave[] waves;
     private int currentWave = 0;
     private bool startNextWave = false;
@@ -55,6 +57,7 @@ public class Spawner : MonoBehaviour
             if (currentWave != waves.Length - 1)
             {
                 currentWave++;
+                waveTracker.NextWave();
             }
         }
     }
@@ -62,6 +65,7 @@ public class Spawner : MonoBehaviour
     private void StartWave(Wave w)
     {
         startNextWave = false;
+        waveTracker.SliderSpeed = w.SliderSpeed;
         StartCoroutine(SpawnWave(w));
     }
 
