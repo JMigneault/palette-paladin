@@ -15,6 +15,8 @@ public class Slider : MonoBehaviour {
 
     private float speed; // Speed in radians/pi/sec => 1 is 180 degrees/second
     private int direction = 1;
+    private bool frozen = false;
+    [SerializeField] private float freezeTime;
 
     [SerializeField] private WaveTracker waveTracker;
     [SerializeField] private float[] waveSpeeds; // a speed for each wave
@@ -68,8 +70,11 @@ public class Slider : MonoBehaviour {
     // Moves the slider by increasing position by speed and finding the new pixel coordinates
     private void MoveSlider()
     {
-        position += speed * direction * Time.deltaTime;
-        transform.position = PosToCoords(position);
+        if (!frozen)
+        {
+            position += speed * direction * Time.deltaTime;
+            transform.position = PosToCoords(position);
+        }
     }
 
     // Check if the slider has reached the end of the bar and reverse speed if so
@@ -101,8 +106,14 @@ public class Slider : MonoBehaviour {
     // Called when the user misses a region
     private void MissedRegion()
     {
-        // todo
-        Debug.Log("You missed.");
+        StartCoroutine(FreezeSlider(freezeTime));
+    }
+
+    private IEnumerator FreezeSlider(float t)
+    {
+        frozen = true;
+        yield return new WaitForSeconds(t);
+        frozen = false;
     }
 
     // called each frame

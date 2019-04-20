@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Queen : Enemy
 {
@@ -14,8 +15,10 @@ public class Queen : Enemy
     [SerializeField] private float minWalkDistance;
     [SerializeField] private int[] canSpawnEnemies;
 
-    [SerializeField] private Palette.PalColor[] healthSequence;
-    private int nextColorIndex = 0;
+    [SerializeField] private Eye eyeTemplate;
+    [SerializeField] private Vector2[] eyePositions;
+    private Eye[] eyes;
+    private int nextEyeIndex = 0;
 
     private Vector3 targetPosition;
     private Enemy[] enemies;
@@ -23,6 +26,7 @@ public class Queen : Enemy
     private void Start()
     {
         enemies = enemiesParent.GetComponentsInChildren<Enemy>();
+        eyes = GetEyes(3);
     }
 
     private void Update()
@@ -35,13 +39,26 @@ public class Queen : Enemy
         Move();
     }
 
+    private Eye[] GetEyes(int numEyes)
+    {
+        Eye[] eyes = new Eye[numEyes];
+        for (int i = 0; i < numEyes; i++)
+        {
+            eyes[i] = Instantiate(eyeTemplate);
+            eyes[i].transform.parent = this.transform;
+            Palette.PalColor randomColor = (Palette.PalColor)Random.Range(4, 7);
+            eyes[i].SetColorPos(randomColor, eyePositions[i]);
+        }
+        return eyes;
+    }
+
     public override void AttackedBy(Palette.PalColor attackColor)
     {
-        if (attackColor == healthSequence[nextColorIndex])
+        if (eyes[nextEyeIndex].IsColor(attackColor))
         {
-            nextColorIndex++;
-            // todo adjust sprite
-            if (nextColorIndex == healthSequence.Length)
+            eyes[nextEyeIndex].KillEye();
+            nextEyeIndex++;
+            if (nextEyeIndex == eyes.Length)
             {
                 this.Die();
             }

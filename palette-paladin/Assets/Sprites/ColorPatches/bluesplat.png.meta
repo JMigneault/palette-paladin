@@ -1,8 +1,10 @@
 fileFormatVersion: 2
-guid: 89aea383f0d712848bdf37fd7c85b077
+guid: ab88e67d262738f4e9774464cab3bfd2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: table
+    21300000: bluesplat_0
+    21300002: bluesplat_1
+    21300004: bluesplat_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -44,11 +46,11 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.518, y: 0.5}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -85,21 +87,61 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: table
+      name: bluesplat_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 9
-        width: 208
-        height: 102
+        x: 9
+        y: 32
+        width: 18
+        height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9b49eaae459ec74e8f54b9feb072b35
+      spriteID: 758386941f0e38c4cba270442fc8a434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluesplat_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 6
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07bbc9eb1ed1a5549bbf5864739baef4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluesplat_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 30
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4cbcfb86bdf2e549b963af8aa2ccf40
       vertices: []
       indices: 
       edges: []
@@ -107,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a6fe64abeb855f84c9ffcf948611c21e
+    spriteID: 459bccd0012a52449bfd898ef60ab7e7
     vertices: []
     indices: 
     edges: []

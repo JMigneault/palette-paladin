@@ -17,6 +17,9 @@ public class Palette : MonoBehaviour {
 
     [SerializeField] private Sprite[] paletteSprites; // All palette sprites (of each color)
 
+    private bool frozen = false;
+    [SerializeField] float freezeTime;
+
     // Image for displaying the current color
     [SerializeField] private Image currentImage;
 
@@ -97,8 +100,19 @@ public class Palette : MonoBehaviour {
     // Casts the color, removing it from the palette and affecting creatures
     private void CastColor()
     {
-        enemyManager.CastColor(this.color);
-        this.color = PalColor.None;
+        if (!frozen)
+        {
+            StartCoroutine(FreezeCasting(freezeTime));
+            enemyManager.CastColor(this.color);
+            this.color = PalColor.None;
+        }
+    }
+
+    private IEnumerator FreezeCasting(float t)
+    {
+        this.frozen = true;
+        yield return new WaitForSeconds(t);
+        this.frozen = false;
     }
 
     // called each from
