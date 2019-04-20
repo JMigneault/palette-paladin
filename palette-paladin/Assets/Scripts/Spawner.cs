@@ -53,11 +53,11 @@ public class Spawner : MonoBehaviour
         if (startNextWave)
         {
             wavesCompleted++;
+            waveTracker.NextWave();
             StartWave(waves[currentWave]);
             if (currentWave != waves.Length - 1)
             {
                 currentWave++;
-                waveTracker.NextWave();
             }
         }
     }

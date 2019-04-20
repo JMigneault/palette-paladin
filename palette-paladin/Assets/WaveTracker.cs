@@ -9,9 +9,21 @@ public class WaveTracker : MonoBehaviour {
     private float sliderSpeed;
     public float SliderSpeed { get; set; }
 
+    private UnityEngine.UI.Text waveDisplay;
+
     public void NextWave ()
     {
         currentWave++;
+    }
+
+    private void Start()
+    {
+        waveDisplay = GetComponent<UnityEngine.UI.Text>();
+    }
+
+    private void Update()
+    {
+        waveDisplay.text = "Wave: " + this.currentWave;
     }
 
 }
