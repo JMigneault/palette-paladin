@@ -96,7 +96,7 @@ public class Queen : Enemy
 
     private bool ReachedTarget()
     {
-        return (targetPosition - transform.position).magnitude < this.speed;
+        return (targetPosition - transform.position).magnitude < this.speed * Time.deltaTime;
     }
 
     private void GenerateMinions()

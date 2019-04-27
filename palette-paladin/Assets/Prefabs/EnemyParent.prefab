@@ -1552,9 +1552,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   enemiesParent: {fileID: 1424992275064796}
-  spawnBoundsXmin: -7
-  spawnBoundsXmax: 7
-  spawnBoundsYmin: 5
+  spawnBoundsXmin: -6
+  spawnBoundsXmax: 6
+  spawnBoundsYmin: 2.5
   spawnBoundsYmax: -1
   spawner: {fileID: 114634631102964316, guid: a6aa1b0ccb03cec4eaa2f592cecf4595, type: 2}
   minWalkDistance: 3

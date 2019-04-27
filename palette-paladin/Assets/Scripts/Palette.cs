@@ -16,12 +16,15 @@ public class Palette : MonoBehaviour {
     [SerializeField] private EnemyManager enemyManager; // Tracks all enemies on the screen
 
     [SerializeField] private Sprite[] paletteSprites; // All palette sprites (of each color)
+    [SerializeField] private Sprite[] castSprites;
 
     private bool frozen = false;
     [SerializeField] float freezeTime;
+    [SerializeField] float castingFrameDelay;
 
     // Image for displaying the current color
     [SerializeField] private Image currentImage;
+    [SerializeField] private Image castImage;
 
     // Naive color mixing system (all done with conditionals)
     public void MixColor(PalColor toMixColor)
@@ -102,10 +105,29 @@ public class Palette : MonoBehaviour {
     {
         if (!frozen)
         {
-            StartCoroutine(FreezeCasting(freezeTime));
             enemyManager.CastColor(this.color);
+            StartCoroutine(FreezeCasting(freezeTime));
+            if (this.color != PalColor.None)
+            {
+                StartCoroutine(CastingAnimation(this.color));
+            }
             this.color = PalColor.None;
         }
+    }
+
+    private IEnumerator CastingAnimation(PalColor c)
+    {
+        int i = (int) c - 1;
+        this.castImage.sprite = castSprites[(4 * i) + 0];
+        this.castImage.enabled = true;
+        yield return new WaitForSeconds(castingFrameDelay);
+        this.castImage.sprite = castSprites[(4 * i) + 1];
+        yield return new WaitForSeconds(castingFrameDelay);
+        this.castImage.sprite = castSprites[(4 * i) + 2];
+        yield return new WaitForSeconds(castingFrameDelay);
+        this.castImage.sprite = castSprites[(4 * i) + 3];
+        yield return new WaitForSeconds(castingFrameDelay);
+        this.castImage.enabled = false;
     }
 
     private IEnumerator FreezeCasting(float t)
@@ -113,6 +135,12 @@ public class Palette : MonoBehaviour {
         this.frozen = true;
         yield return new WaitForSeconds(t);
         this.frozen = false;
+    }
+
+    private void Start()
+    {
+        this.castImage.sprite = null;
+        this.castImage.enabled = false;
     }
 
     // called each from
