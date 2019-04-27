@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour {
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private int startingHealth;
     [SerializeField] private LossPauseMenu menuManager;
+    [SerializeField] private UnityEngine.UI.Image[] hearts;
     private int health;
 
 
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour {
     void TakeDamage(int dmg)
     {
         this.health -= dmg;
+        hearts[this.health].enabled = false;
         if (this.health <= 0)
         {
             this.GameOver();
