@@ -42,6 +42,12 @@ public class Wave {
     {
         return waveComposition[wavei].SpawnRate;
     }
+
+    public void ResetWave()
+    {
+        wavei = 0;
+        enemyj = 0;
+    }
 	
 }
 

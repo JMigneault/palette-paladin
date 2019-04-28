@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LossPauseMenu : MonoBehaviour {
 
-    [SerializeField] private GameObject PauseMenuUI;
-    [SerializeField] private GameObject GameOverUI;
+    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject instructionsUI;
+    [SerializeField] private GameObject creditsUI;
     private bool paused = false;
 
     private void Update()
@@ -25,21 +27,21 @@ public class LossPauseMenu : MonoBehaviour {
     public void PauseGame()
     {
         Time.timeScale = 0;
-        PauseMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(true);
         paused = true;
     }
     
     public void UnpauseGame()
     {
         Time.timeScale = 1;
-        PauseMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
         paused = false;
     }
 
     public void GameLost()
     {
         Time.timeScale = 0;
-        GameOverUI.SetActive(true);
+        gameOverUI.SetActive(true);
         paused = true;
     }
 
@@ -48,4 +50,30 @@ public class LossPauseMenu : MonoBehaviour {
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void ShowInstructions()
+    {
+        instructionsUI.SetActive(true);
+    }
+
+    public void CloseInstructions()
+    {
+        instructionsUI.SetActive(false);
+    }
+
+    public void ShowCredits()
+    {
+        creditsUI.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        creditsUI.SetActive(false);
+    }
+
 }

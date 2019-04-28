@@ -15,7 +15,6 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Wave[] waves;
     private int currentWave = 0;
     private bool startNextWave = false;
-    private int wavesCompleted = 0;
 
     // Parameters defining the sliders path curveRadius(X/Y) values in range [0.0f, 1.0f] as proportion of screen
     [SerializeField] private float curveRadiusX;
@@ -52,7 +51,7 @@ public class Spawner : MonoBehaviour
     {
         if (startNextWave)
         {
-            wavesCompleted++;
+            waveTracker.WaveCompleted();
             StartWave(waves[currentWave]);
             if (currentWave != waves.Length - 1)
             {
@@ -65,6 +64,7 @@ public class Spawner : MonoBehaviour
     private void StartWave(Wave w)
     {
         startNextWave = false;
+        w.ResetWave();
         waveTracker.SliderSpeed = w.SliderSpeed;
         StartCoroutine(SpawnWave(w));
     }

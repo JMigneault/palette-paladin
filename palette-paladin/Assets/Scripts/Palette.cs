@@ -105,8 +105,7 @@ public class Palette : MonoBehaviour {
     {
         if (!frozen)
         {
-            enemyManager.CastColor(this.color);
-            StartCoroutine(FreezeCasting(freezeTime));
+            // StartCoroutine(FreezeCasting(freezeTime));
             if (this.color != PalColor.None)
             {
                 StartCoroutine(CastingAnimation(this.color));
@@ -123,6 +122,7 @@ public class Palette : MonoBehaviour {
         yield return new WaitForSeconds(castingFrameDelay);
         this.castImage.sprite = castSprites[(4 * i) + 1];
         yield return new WaitForSeconds(castingFrameDelay);
+        enemyManager.CastColor(c);
         this.castImage.sprite = castSprites[(4 * i) + 2];
         yield return new WaitForSeconds(castingFrameDelay);
         this.castImage.sprite = castSprites[(4 * i) + 3];
