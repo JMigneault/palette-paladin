@@ -25,6 +25,8 @@ public class Spawner : MonoBehaviour
     private float curveOffsetX; // Pixel offsets for starting position
     private float curveOffsetY;
 
+    private AudioSource spawnSound; // Sound that plays when enemies are spawned
+
     // Changes the position proportion ([0.0f, 1.0f]) to a pixel position on the screen
     public Vector2 PosToCoords(float pos)
     {
@@ -36,6 +38,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        spawnSound = GetComponents<AudioSource>()[1];
         curveOffsetX = this.transform.position.x;
         curveOffsetY = this.transform.position.y;
         enemyManager = this.GetComponent<EnemyManager>();
@@ -91,6 +94,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn(Enemy e, Vector3 spawnPoint)
     {
+        spawnSound.Play();
         Enemy spawned = Instantiate(e.gameObject, spawnPoint, Quaternion.identity).GetComponent<Enemy>();
         enemyManager.AddEnemy(spawned);
         spawned.Spawn(enemyManager);

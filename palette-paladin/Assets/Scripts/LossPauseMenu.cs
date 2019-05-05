@@ -51,6 +51,12 @@ public class LossPauseMenu : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
     public void Quit()
     {
         Application.Quit();

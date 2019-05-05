@@ -26,6 +26,9 @@ public class Palette : MonoBehaviour {
     [SerializeField] private Image currentImage;
     [SerializeField] private Image castImage;
 
+    private AudioSource paintSound;
+    private AudioSource mixSound;
+
     // Naive color mixing system (all done with conditionals)
     public void MixColor(PalColor toMixColor)
     {
@@ -116,6 +119,7 @@ public class Palette : MonoBehaviour {
 
     private IEnumerator CastingAnimation(PalColor c)
     {
+        paintSound.Play();
         int i = (int) c - 1;
         this.castImage.sprite = castSprites[(4 * i) + 0];
         this.castImage.enabled = true;
@@ -139,6 +143,7 @@ public class Palette : MonoBehaviour {
 
     private void Start()
     {
+        paintSound = GetComponent<AudioSource>();
         this.castImage.sprite = null;
         this.castImage.enabled = false;
     }

@@ -549,8 +549,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607801961278714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.51, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children:
   - {fileID: 4484400315909820}
   m_Father: {fileID: 4046784340670734}
@@ -1550,7 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9fedf93a24c4545a361e6a207fc47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2.5
   enemiesParent: {fileID: 1424992275064796}
   spawnBoundsXmin: -6
   spawnBoundsXmax: 6
@@ -1562,9 +1562,9 @@ MonoBehaviour:
   eyeTemplate: {fileID: 114336174985589466, guid: 9825da191349e3e4789082a6026d9a8b,
     type: 2}
   eyePositions:
-  - {x: -0.6, y: 0.74}
-  - {x: 0, y: 0.74}
-  - {x: 0.7, y: 0.74}
+  - {x: -0.53, y: 0.43}
+  - {x: 0.03, y: -0.42}
+  - {x: 0.58, y: 0.45}
 --- !u!114 &114683232434946504
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,6 +5,12 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 
     private List<Enemy> enemies = new List<Enemy>();
+    private AudioSource deathSound; // death sound effect for enemies 
+
+    private void Start()
+    {
+        this.deathSound = GetComponents<AudioSource>()[0];
+    }
 
     private void Update()
     {
@@ -39,6 +45,7 @@ public class EnemyManager : MonoBehaviour {
         {
             if (e.IsDead)
             {
+                deathSound.Play();
                 Object.Destroy(e.gameObject);
                 toRemove.Add(e);
             }
