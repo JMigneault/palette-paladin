@@ -63,10 +63,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8590abe473a24ff1a6113a8645a30a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minion: {fileID: 0}
-  minionParent: {fileID: 0}
-  spawnTime: 2
-  spawnDelay: 0.7
+  enemyParent: {fileID: 1424992275064796, guid: 822daff9195b932418b0132c0f84e1ca,
+    type: 2}
+  waves:
+  - waveComposition:
+    - indexRange: 00000000010000000200000003000000040000000500000006000000
+      numEnemies: 10
+      spawnRate: 2
+      postSpawnDelay: 5
+    - indexRange: 070000000800000009000000
+      numEnemies: 10
+      spawnRate: 1
+      postSpawnDelay: 5
+    - indexRange: 0a000000
+      numEnemies: 1
+      spawnRate: 1
+      postSpawnDelay: 20
   curveRadiusX: 8
   curveRadiusY: 9
   minAngle: 0

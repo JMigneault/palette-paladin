@@ -6,7 +6,8 @@ public class PlayerHealth : MonoBehaviour {
 
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private int startingHealth;
-    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private LossPauseMenu menuManager;
+    [SerializeField] private UnityEngine.UI.Image[] hearts;
     private int health;
 
 
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour {
     void TakeDamage(int dmg)
     {
         this.health -= dmg;
+        hearts[this.health].enabled = false;
         if (this.health <= 0)
         {
             this.GameOver();
@@ -28,8 +30,8 @@ public class PlayerHealth : MonoBehaviour {
     //  Called upon game lost
     private void GameOver()
     {
-        Time.timeScale = 0;
-        gameOverUI.SetActive(true);
+        menuManager.GameLost();
+
     }
 
     // Called when an enemy walks into the paladin
@@ -38,8 +40,8 @@ public class PlayerHealth : MonoBehaviour {
         if (collision.tag == "Minion")
         {
             Minion m = collision.GetComponent<Minion>();
-            this.TakeDamage(1);
             m.Die();
+            this.TakeDamage(1);
             enemyManager.ClearEnemies();
         }
     }

@@ -9,10 +9,13 @@ using UnityEngine;
 public class SliderRegionColor : SliderRegion {
 
     [SerializeField] protected Palette.PalColor palColor; // Color of region
+    [SerializeField] private Sprite playerImage;
+    [SerializeField] private Player player;
 
     public override void UseRegion()
     {
         palette.MixColor(this.palColor); // Mix the color into the palette
+        player.SetCastImage(playerImage);
     }
 
 }

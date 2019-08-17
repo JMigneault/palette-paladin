@@ -52,3 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 0}
+  GameOverUI: {fileID: 0}
+  InstructionsUI: {fileID: 0}

@@ -8,11 +8,17 @@ public class Minion : Enemy
     // Minions have one static color
     [SerializeField] private Palette.PalColor color;
     [SerializeField] private Vector3 targetPos;
+    [SerializeField] private Sprite deathSprite;
+    [SerializeField] private float deathTime;
+
+    protected bool stopWalking = false;
 
     // Called each frame
     private void Update()
     {
-        Move();
+        if (!stopWalking) {
+            Move();
+        }
     }
 
     // If the minion is hit by its color it is killed
@@ -27,7 +33,15 @@ public class Minion : Enemy
     // No death effect
     public override void Die()
     {
-        this.isDead = true;
+        StartCoroutine(DeathRoutine());
+    }
+
+    protected IEnumerator DeathRoutine()
+    {
+        this.GetComponentInChildren<SpriteRenderer>().sprite = this.deathSprite;
+        this.stopWalking = true;
+        yield return new WaitForSeconds(deathTime);
+        isDead = true;
     }
 
     // Simply advance down the screen
@@ -38,6 +52,6 @@ public class Minion : Enemy
     }
 
     // No spawn effect
-    public override void Spawn() {  }
+    public override void Spawn(EnemyManager e) {  }
     
 }

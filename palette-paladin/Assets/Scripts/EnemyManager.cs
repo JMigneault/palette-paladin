@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
 
-    // serializing temporary
-    // todo integrate with enemy spawning
     private List<Enemy> enemies = new List<Enemy>();
+    private AudioSource deathSound; // death sound effect for enemies 
+
+    private void Start()
+    {
+        this.deathSound = GetComponents<AudioSource>()[0];
+    }
+
+    private void Update()
+    {
+        ClearEnemies();
+    }
 
     // Casts a color on all enemies
     public void CastColor(Palette.PalColor color)
@@ -15,7 +24,6 @@ public class EnemyManager : MonoBehaviour {
         {
             e.AttackedBy(color);
         }
-        ClearEnemies();
     }
 
     // Adds an enemy to the enemy list
@@ -23,6 +31,11 @@ public class EnemyManager : MonoBehaviour {
     {
         enemies.Add(e);
     }
+	
+	public bool hasEnemies()
+	{
+		return enemies.Count > 0;
+	}
 
     // Updates the enemy list based on which enemies have been killed
     public void ClearEnemies()
@@ -32,6 +45,7 @@ public class EnemyManager : MonoBehaviour {
         {
             if (e.IsDead)
             {
+                deathSound.Play();
                 Object.Destroy(e.gameObject);
                 toRemove.Add(e);
             }

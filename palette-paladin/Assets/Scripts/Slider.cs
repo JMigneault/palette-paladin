@@ -13,7 +13,13 @@ public class Slider : MonoBehaviour {
     [SerializeField] private float minAngle; // Angles in radians/pi => 2 is 360 degrees, 1 is a semicircle, 5/6 is 5/12 of a circle
     [SerializeField] private float maxAngle;
 
-    [SerializeField] private float speed; // Speed in radians/pi/sec => 1 is 180 degrees/second
+    private float speed; // Speed in radians/pi/sec => 1 is 180 degrees/second
+    private int direction = 1;
+    private bool frozen = false;
+    [SerializeField] private float freezeTime;
+
+    [SerializeField] private WaveTracker waveTracker;
+    [SerializeField] private float[] waveSpeeds; // a speed for each wave
 
     private SliderRegion[] regions; // An array of regions on the slider bar
 
@@ -64,8 +70,11 @@ public class Slider : MonoBehaviour {
     // Moves the slider by increasing position by speed and finding the new pixel coordinates
     private void MoveSlider()
     {
-        position += speed * Time.deltaTime;
-        transform.position = PosToCoords(position);
+        if (!frozen)
+        {
+            position += speed * direction * Time.deltaTime;
+            transform.position = PosToCoords(position);
+        }
     }
 
     // Check if the slider has reached the end of the bar and reverse speed if so
@@ -73,11 +82,11 @@ public class Slider : MonoBehaviour {
     {
         if (position > 1.0f) {
             position = 1.0f;
-            speed *= -1;
+            direction *= -1;
         } else if (position < 0.0f)
         {
             position = 0.0f;
-            speed *= -1;
+            direction *= -1;
         }
     }
 
@@ -97,13 +106,20 @@ public class Slider : MonoBehaviour {
     // Called when the user misses a region
     private void MissedRegion()
     {
-        // todo
-        Debug.Log("You missed.");
+        StartCoroutine(FreezeSlider(freezeTime));
+    }
+
+    private IEnumerator FreezeSlider(float t)
+    {
+        frozen = true;
+        yield return new WaitForSeconds(t);
+        frozen = false;
     }
 
     // called each frame
     private void Update()
     {
+        this.speed = waveTracker.SliderSpeed;
         MoveSlider(); // advance slider position
         CheckForTurnAround(); // reverse speed if slider at end of bar
         if (Input.GetKeyDown(KeyCode.Space)) // check for user input
