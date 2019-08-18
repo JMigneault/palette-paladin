@@ -26,15 +26,17 @@ public class Slider : MonoBehaviour {
     private float position = 1.0f; // The proportion of the slider bar from right to left => 0.0f is the right end of the bar; 1.0f is the left end
     private float curveOffsetX; // Pixel offsets for starting position
     private float curveOffsetY;
+    private float CurveOffsetX { get { return this.curveOffsetX * Screen.width; } }
+    private float CurveOffsetY { get { return this.curveOffsetY * Screen.height; } }
 
     private void Start()
     {
         // SliderRegion objects as children
         regions = GetComponentsInChildren<SliderRegion>();
-        curveOffsetX = this.transform.position.x;
-        curveOffsetY = this.transform.position.y;
+        curveOffsetX = this.transform.position.x / Screen.width;
+        curveOffsetY = this.transform.position.y / Screen.height;
         // Uncomment to see slider regions drawn in scene view while game is running
-        TestDisplayRegions();
+        // TestDisplayRegions();
     }
 
     // For testing; displays slider regions
@@ -50,8 +52,8 @@ public class Slider : MonoBehaviour {
     public Vector2 PosToCoords(float pos)
     {
         float t = minAngle * Mathf.PI + (maxAngle - minAngle) * Mathf.PI * pos;
-        float x = S2P(curveRadiusX, true) * Mathf.Cos(t) + curveOffsetX;
-        float y = S2P(curveRadiusY, false) * Mathf.Sin(t) + curveOffsetY;
+        float x = S2P(curveRadiusX, true) * Mathf.Cos(t) + CurveOffsetX;
+        float y = S2P(curveRadiusY, false) * Mathf.Sin(t) + CurveOffsetY;
         return new Vector2(x, y);
     }
 
@@ -80,13 +82,13 @@ public class Slider : MonoBehaviour {
     // Check if the slider has reached the end of the bar and reverse speed if so
     private void CheckForTurnAround()
     {
-        if (position > 1.0f) {
-            position = 1.0f;
-            direction *= -1;
+        if (this.position > 1.0f) {
+            this.position = 1.0f;
+            this.direction *= -1;
         } else if (position < 0.0f)
         {
-            position = 0.0f;
-            direction *= -1;
+            this.position = 0.0f;
+            this.direction *= -1;
         }
     }
 
@@ -95,7 +97,7 @@ public class Slider : MonoBehaviour {
     {
         foreach (SliderRegion s in regions)
         {
-            if (s.IsInRegion(position))
+            if (s.IsInRegion(this.position))
             {
                 return s;
             }
